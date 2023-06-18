@@ -1,0 +1,9 @@
+/.note
+/vendor
+/resources/lang
+/public/assets/images
+.notes
+.env
+/.git
+/.vscode
+composer.lock
