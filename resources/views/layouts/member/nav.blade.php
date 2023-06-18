@@ -36,7 +36,7 @@
                         <div class="menu-title">Antrian</div>
                     </a>
                     <ul>
-                        <li> <a href="{{route('antrian.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a></li>
+                        <li> <a href="{{route('member.antrian')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a></li>
                         <li> <a href="{{route('antrian.history')}}"><i class="bx bx-right-arrow-alt"></i>@lang('History')</a></li>
                     </ul>
                 </li>

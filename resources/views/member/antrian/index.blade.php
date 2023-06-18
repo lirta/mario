@@ -35,13 +35,14 @@
 								<table class="table table-bordered mb-0 table-hover">
 									<thead>
 										<tr>
+										<th>@lang('No Antrian')</th>
 										<th>@lang('Layanan')</th>
 										<th>@lang('Perkiraan Waktu')</th>
 										<th>@lang('Description')</th>
 										</tr>
 									</thead>
 									<tbody>
-										@forelse ($layanan as $item)
+										@forelse ($antrian as $item)
 											<tr>
 												<td>{{$item->layanan}}</td>
 												<td>{{$item->perkiraan_waktu}} Menit</td>
@@ -54,7 +55,7 @@
 										@endforelse
 									</tbody>
 								</table>
-								{!! $layanan->links() !!}
+								{!! $antrian->links() !!}
 							</div>
 						</div>
 						{{-- <div class="card-footer py-4">

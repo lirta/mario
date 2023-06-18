@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\Member\AntrianMemberController;
 use App\Http\Controllers\Member\Auth\MemberAuthController;
 use App\Http\Controllers\Member\LayananMemberController;
 use App\Http\Controllers\Member\RegisterMemberController;
@@ -79,6 +80,7 @@ Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
 		// dashboard
 		Route::get('/', [MemberAuthController::class, 'dashboard'])->name('member.dashboard');
 		Route::get('/layanan', [LayananMemberController::class, 'index'])->name('member.layanan');
+		Route::get('/antrian', [AntrianMemberController::class, 'index'])->name('member.antrian');
 	});
 });
 // admin area 
