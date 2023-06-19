@@ -25,18 +25,18 @@
     <link rel="stylesheet" href="{{ asset('assets/css/dark-theme.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/header-colors.css')}}" />
-    <title>Bengkel Mario</title>
+    <title>Blessing Service</title>
 </head>
 
 <body>
 	<!--wrapper-->
 	<div class="wrapper">
         <!--navigation-->
-        @include("layouts.member.nav")
+        @include("layouts.admin.nav")
         <!--end navigation-->
 
 		<!--start header -->
-		@include("layouts.member.header")
+		@include("layouts.admin.header")
 		<!--end header -->
 
 		<!--start page wrapper -->

@@ -81,17 +81,15 @@ Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
 		Route::get('/', [MemberAuthController::class, 'dashboard'])->name('member.dashboard');
 		Route::get('/layanan', [LayananMemberController::class, 'index'])->name('member.layanan');
 		Route::get('/antrian', [AntrianMemberController::class, 'index'])->name('member.antrian');
+		Route::get('/antrian-create', [AntrianMemberController::class, 'create'])->name('member.antrian.create');
+		Route::post('/antrian-store', [AntrianMemberController::class, 'store'])->name('member.antrian.store');
+		Route::get('/antrian-history', [AntrianMemberController::class, 'history'])->name('member.antrian.histpry');
 	});
 });
 // admin area 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 	Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin_login');
-
-	Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
-	Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-	Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin_login');
-	Route::get('/test', [TestController::class, 'index'])->name('test_index');
 	Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
 	Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 

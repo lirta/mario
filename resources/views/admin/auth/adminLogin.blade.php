@@ -20,7 +20,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ url('assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/css/icons.css') }}" rel="stylesheet">
-	<title>Synadmin – Bootstrap5 Admin Template</title>
+	<title>Blessing Service</title>
 </head>
 
 <body>
@@ -40,45 +40,14 @@
                                     <div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;">
                                             <span class="d-flex justify-content-center align-items-center">
-												@if (@$settings->logo)
-													<img class="me-2" src="{{ url('assets/images/logo/'.$settings->logo) }}" width="150" alt="Image Description">
-												@else
-                                                	<img class="me-2" src="{{ url('assets/images/logo-img.png')}}" width="150" alt="Image Description">
-
-													@endif
-                                                	{{-- <img class="me-2" src="{{ url('assets/images/logo-img.png')}}" width="150" alt="Image Description"> --}}
+												<img class="me-2" src="{{ url('assets/images/logo/'.$settings->logo) }}" width="150" alt="Image Description">
 											</span>
 										</a>
 									</div>
 									<div class="text-center">
 										<h3 class="">Sign in - Administrator</h3>
-										{{-- <p>Don't have an account yet? <a href="{{ url('authentication-signup') }}">Sign up here</a>
-										</p> --}}
 									</div>
-									{{-- <div class="d-grid">
-										<a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span class="d-flex justify-content-center align-items-center">
-                          <img class="me-2" src="{{ url('assets/images/icons/search.svg')}}" width="16" alt="Image Description">
-                          <span>Sign in with Google</span>
-											</span>
-										</a> <a href="javascript:;" class="btn btn-facebook"><i class="bx bxl-facebook"></i>Sign in with Facebook</a>
-									</div>
-									<div class="login-separater text-center mb-4"> <span>OR SIGN IN WITH EMAIL</span>
-										<hr/>
-									</div> --}}
-
-                                    @if (Session('warning'))
-                                    <div class="alert border-0 border-start border-5 border-danger alert-dismissible fade show py-2">
-                                        <div class="d-flex align-items-center">
-                                            <div class="font-35 text-danger"><i class='bx bxs-message-square-x'></i>
-                                            </div>
-                                            <div class="ms-3">
-                                                <h6 class="mb-0 text-danger">Danger Alerts</h6>
-                                                <div>{{ session('warning') }}</div>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                    @endif
+									@include('alert.alert')
 
 									<div class="form-body">
 										<form class="row g-3" action="{{ route('admin.login') }}" enctype="multipart/form-data" method="POST">

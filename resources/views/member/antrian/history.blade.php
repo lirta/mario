@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('layouts.member.app')
 
 
 @section('wrapper')
@@ -18,9 +18,6 @@
 					</div>
 				</div>
 				<div class="col-sm-9 text-secondary">
-						<a href="{{route('member.antrian.create')}}" class="btn btn-sm btn-outline-primary mr-2" data-toggle="tooltip" title="" data-original-title="@lang('create')">
-							Create Antrian
-						</a>
                 </div>
 				<!--end breadcrumb-->
 				
@@ -36,19 +33,20 @@
 									<thead>
 										<tr>
 										<th>@lang('No Antrian')</th>
+										<th>@lang('Tanggal')</th>
 										<th>@lang('Layanan')</th>
 										<th>@lang('Perkiraan Waktu')</th>
 										<th>@lang('Description')</th>
 										<th>@lang('Status')</th>
-										<th>@lang('Action')</th>
 										</tr>
 									</thead>
 									<tbody>
 										@forelse ($antrian as $item)
 											<tr>
 												<td>
-													{{$item->no_antrian}}
+													<span class="badge text-primary bg-light-primary p-2 px-3 ps">{{$item->no_antrian}}</span>
 												</td>
+												<td>{{$item->tanggal}}</td>
 												<td>{{$item->service->layanan}}</td>
 												<td>{{$item->service->perkiraan_waktu}} Menit</td>
 												<td>{{$item->service->description}}</td>
@@ -59,15 +57,6 @@
 														<span class="badge text-primary bg-light-primary p-2 px-3 ps">In Progres</span>
 													@elseif($item->status == 2)
 														<span class="badge text-success bg-light-success p-2 px-3 ps">Finish</span>
-													@elseif($item->status == 3)
-														<span class="badge text-danger bg-light-danger p-2 px-3 ps">Cancel</span>
-													@endif
-												</td>
-												<td>
-													@if ($item->status == 0)
-														<span class="badge text-warning bg-light-warning p-2 px-3 ps">Waiting List</span>
-													@elseif($item->status == 1)
-														<span class="badge text-primary bg-light-primary p-2 px-3 ps">In Progres</span>
 													@elseif($item->status == 3)
 														<span class="badge text-danger bg-light-danger p-2 px-3 ps">Cancel</span>
 													@endif

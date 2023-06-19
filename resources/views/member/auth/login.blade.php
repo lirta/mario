@@ -20,7 +20,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ url('assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ url('assets/css/icons.css') }}" rel="stylesheet">
-	<title>{{@$settings->name}}</title>
+	<title>Blessing Service</title>
 </head>
 
 <body>
@@ -40,13 +40,7 @@
                                     <div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;">
                                             <span class="d-flex justify-content-center align-items-center">
-												@if (@$settings->logo)
-													<img class="me-2" src="{{ url('assets/images/logo/'.$settings->logo) }}" width="150" alt="Image Description">
-												@else
-                                                	<img class="me-2" src="{{ url('assets/images/logo-img.png')}}" width="150" alt="Image Description">
-
-													@endif
-                                                	{{-- <img class="me-2" src="{{ url('assets/images/logo-img.png')}}" width="150" alt="Image Description"> --}}
+                                                <img class="me-2" src="{{ url('assets/images/logo-img.png')}}" width="150" alt="Image Description">
 											</span>
 										</a>
 									</div>

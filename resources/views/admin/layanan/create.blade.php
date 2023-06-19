@@ -37,9 +37,8 @@
 						<div class="col-lg-12">
 								{{-- alert --}}
 							<div class="card">
-							<form action="{{route('layanan.store')}}" method="POST" enctype="multipart/form-data">
+							<form action="{{route('member.antrian.store')}}" method="POST" enctype="multipart/form-data">
 							@csrf
-							@method("POST")
 								<div class="card-body">
 									<div class="row mb-3">
 										<div class="col-sm-3">

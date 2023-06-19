@@ -37,22 +37,11 @@
                     </a>
                     <ul>
                         <li> <a href="{{route('member.antrian')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a></li>
-                        <li> <a href="{{route('antrian.history')}}"><i class="bx bx-right-arrow-alt"></i>@lang('History')</a></li>
+                        <li> <a href="{{route('member.antrian.histpry')}}"><i class="bx bx-right-arrow-alt"></i>@lang('History')</a></li>
                     </ul>
                 </li>
 
                 <li class="menu-label">@lang('Membership Management')</li>
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon"><i class='lni lni-users'></i>
-                        </div>
-                        <div class="menu-title">Users</div>
-                    </a>
-                    <ul>
-                        <li> <a href="{{ route('data.admin') }}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a>
-                        </li>
-                    </ul>
-                </li>
 
             </ul>
             <!--end navigation-->

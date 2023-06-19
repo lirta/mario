@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Antrian extends Model
 {
-    use HasFactory;
+	use HasFactory;
+
+	public function service()
+	{
+		return $this->belongsTo(Layanan::class, 'id_layanan');
+	}
 }

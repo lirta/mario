@@ -21,7 +21,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{asset('assets/')}}/css/app.css" rel="stylesheet">
 	<link href="{{asset('assets/')}}/css/icons.css" rel="stylesheet">
-	<title>HoneyGold - Register Member</title>
+	<title>Register Member</title>
 </head>
 
 <body>
@@ -32,16 +32,10 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-white rounded fixed-top rounded-0 shadow-sm">
 				<div class="container-fluid">
 					<div>
-                        @if (@$settings->logo)
-                            <img src="{{ asset('assets/images/logo/'.$settings->logo) }}" class="logo-icon" alt="logo icon">
-
-                        @else
                             <img src="{{ asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
-
-                        @endif
                     </div>
                     <div>
-                        <h4 class="logo-text">{{@$titlePage}}</h4>
+                        <h4 class="logo-text">Blessing Service</h4>
                     </div>
 
 					<div class="user-box dropdown border-light-2">
