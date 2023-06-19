@@ -21,11 +21,52 @@ class AntrianController extends Controller
 		return view('admin.antrian.index', $data);
 	}
 
+	public function history()
+	{
+		$data['pageTitle'] = "History Antrian ";
+		$data['emptyMessage'] = "Belum ada data";
+		$data['antrian'] = Antrian::with('service', 'user')->orderBy('id', 'DESC')->paginate(getPaginate());
+		return view('admin.antrian.history', $data);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+	public function progres($id)
+	{
+		$data = Antrian::find($id);
+		if (empty($data)) {
+			return redirect()->route('antrian.index')->with('error', 'Data not fonud');
+		}
+		$data->status = '1';
+		$data->save();
+
+		return back()->with('success', 'Success progres antrian');
+	}
+	public function finish($id)
+	{
+		$data = Antrian::find($id);
+		if (empty($data)) {
+			return redirect()->route('antrian.index')->with('error', 'Data not fonud');
+		}
+		$data->status = '2';
+		$data->save();
+
+		return back()->with('success', 'Success finish antrian');
+	}
+	public function cancel($id)
+	{
+		$data = Antrian::find($id);
+		if (empty($data)) {
+			return redirect()->route('antrian.index')->with('error', 'Data not fonud');
+		}
+		$data->status = '3';
+		$data->save();
+
+		return back()->with('success', 'Success cancel antrian');
+	}
 	public function create()
 	{
 		//

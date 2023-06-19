@@ -2,6 +2,7 @@
 
 use App\Events\EveryoneEvent;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
+use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\ImageController;
@@ -98,6 +99,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		// dashboard
 		Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
 
+		// staff
+		Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+
+		// member
+		Route::get('/member', [UserController::class, 'index'])->name('user.index');
+
 		// layanan
 		Route::get('/layanan', [LayananController::class, 'index'])->name('layanan.index');
 		Route::get('/layanan-create', [LayananController::class, 'create'])->name('layanan.create');
@@ -109,6 +116,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 		// antrian
 		Route::get('/antrian', [AntrianController::class, 'index'])->name('antrian.index');
+		Route::get('/antrian-progres/{id}', [AntrianController::class, 'progres'])->name('antrian.progres');
+		Route::get('/antrian-finish/{id}', [AntrianController::class, 'finish'])->name('antrian.finish');
+		Route::get('/antrian-cancel/{id}', [AntrianController::class, 'cancel'])->name('antrian.cancel');
 
 		// antrian history
 		Route::get('/antrian-history', [AntrianController::class, 'history'])->name('antrian.history');

@@ -1,6 +1,5 @@
 @extends('layouts.admin.app')
 
-
 @section('wrapper')
 	<div class="page-wrapper">
 			<div class="page-content">
@@ -18,9 +17,6 @@
 					</div>
 				</div>
 				<div class="col-sm-9 text-secondary">
-						<a href="{{route('member.antrian.create')}}" class="btn btn-sm btn-outline-primary mr-2" data-toggle="tooltip" title="" data-original-title="@lang('create')">
-							Create Antrian
-						</a>
                 </div>
 				<!--end breadcrumb-->
 				
@@ -36,18 +32,25 @@
 									<thead>
 										<tr>
 										<th>@lang('No Antrian')</th>
+										<th>@lang('Tanggal')</th>
+										<th>@lang('Member')</th>
 										<th>@lang('Layanan')</th>
 										<th>@lang('Perkiraan Waktu')</th>
 										<th>@lang('Description')</th>
 										<th>@lang('Status')</th>
-										<th>@lang('Action')</th>
 										</tr>
 									</thead>
 									<tbody>
 										@forelse ($antrian as $item)
 											<tr>
 												<td>
-													{{$item->no_antrian}}
+													<span class="badge text-primary bg-light-primary p-2 px-3 ps">{{$item->no_antrian}}</span>
+												</td>
+												<td>{{$item->tanggal}}</td>
+												<td>
+													{{$item->user->fullname}} <br>
+													<span class="badge text-success bg-light-success p-2 px-3 ps">{{$item->user->member_id}}</span>
+													
 												</td>
 												<td>{{$item->service->layanan}}</td>
 												<td>{{$item->service->perkiraan_waktu}} Menit</td>
@@ -61,23 +64,6 @@
 														<span class="badge text-success bg-light-success p-2 px-3 ps">Finish</span>
 													@elseif($item->status == 3)
 														<span class="badge text-danger bg-light-danger p-2 px-3 ps">Cancel</span>
-													@endif
-												</td>
-												<td>
-													@if ($item->status == 0)
-														<a href="{{route('antrian.progres', $item->id)}}" class="btn btn-sm btn-primary mr-2" data-toggle="tooltip" title="" data-original-title="@lang('Progres')">
-															@lang('Progres')
-														</a>
-														<a href="{{route('antrian.cancel', $item->id)}}" onclick="return confirm('Are you sure to delete this antrian?')" class="btn btn-sm btn-danger delete" data-toggle="tooltip" title="" data-original-title="@lang('Cancel')">
-															@lang('Cancel')
-														</a>
-													@elseif($item->status == 1)
-														<a href="{{route('antrian.finish', $item->id)}}" class="btn btn-sm btn-success mr-2" data-toggle="tooltip" title="" data-original-title="@lang('Finish')">
-															@lang('Finish')
-														</a>
-														<a href="{{route('antrian.cancel', $item->id)}}" onclick="return confirm('Are you sure to delete this layanan?')" class="btn btn-sm btn-danger delete" data-toggle="tooltip" title="" data-original-title="@lang('Cancel')">
-															@lang('Cancel')
-														</a>
 													@endif
 												</td>
 											</tr>

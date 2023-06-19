@@ -47,7 +47,7 @@
 											<tr>
 												<td>
 													@if ($item->member_id == Auth::user()->member_id)
-														<span class="badge text-primary bg-light-primary p-2 px-3 ps">{{$item->no_antrian}}</span>
+                                                    	<div class="chip bg-primary text-white">{{$item->no_antrian}}</div>
 													@else
 														{{$item->no_antrian}}
 													@endif

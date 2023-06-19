@@ -25,7 +25,7 @@
                         <div class="menu-title">Admin</div>
                     </a>
                     <ul>
-                        <li> <a href=""><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a>
+                        <li> <a href="{{route('staff.index')}}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a>
                         </li>
                     </ul>
                 </li>
@@ -61,7 +61,7 @@
                         <div class="menu-title">Users</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('data.admin') }}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a>
+                        <li> <a href="{{ route('user.index') }}"><i class="bx bx-right-arrow-alt"></i>@lang('Lists')</a>
                         </li>
                     </ul>
                 </li>

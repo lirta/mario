@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.admin.app")
 
 		@section("wrapper")
 		<!--start page wrapper -->
@@ -12,7 +12,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Data pengunjung Wendys SG</li>
+								<li class="breadcrumb-item active" aria-current="page">{{$pageTitle}}</li>
 							</ol>
 						</nav>
 					</div>
@@ -27,87 +27,50 @@
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-bordered mb-0 table-hover">
+									<table id="example__" class="table table-striped table-bordered" style="width:100%">
 										<thead>
 											<tr>
-												<th>@lang('Date')</th>
-												<th>@lang('IP')</th>
-												<th>@lang('Country Name')</th>
-												<th>@lang('Country Code')</th>
-												<th>@lang('Region Code')</th>
-												<th>@lang('Region Name')</th>
-												<th>@lang('City')</th>
-												<th>@lang('Latitude')</th>
-												<th>@lang('Longitude')</th>
+											<th>@lang('#')</th>
+											<th>@lang('Member ID')</th>
+											<th>@lang('Name')</th>
+											<th>@lang('Email')</th>
+											<th>@lang('Phone')</th>
+											<th>@lang('Address')</th>
+											<th>@lang('Joined At')</th>
+											<th>@lang('Action')</th>
 											</tr>
 										</thead>
 										<tbody>
-											@forelse ($user as $item)
-												<tr>
-													<td>{{ showDateTime($item->created_at) }} <br> {{ diffForHumans($item->created_at) }}</td>
-													<td>{{$item->ip_address}}</td>
-													<td>{{$item->countryName}}</td>
-													<td>{{$item->countryCode}}</td>
-													<td>{{$item->regionCode}}</td>
-													<td>{{$item->regionName}}</td>
-													<td>{{$item->cityName}}</td>
-													<td>{{$item->zipCode}}</td>
-													<td>{{$item->latitude}}</td>
-													<td>{{$item->longitude}}</td>
-												</tr>
-											@empty
-												<td class="text-muted text-center" colspan="100%">Tidak ada data</td>
-											@endforelse
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<div class="card-footer py-4">
-								{{-- {!! $orders->links() !!} --}}
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								Data Locasi
-							</div>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-bordered mb-0 table-hover">
-										<thead>
+										@forelse($user as $key => $users)
 											<tr>
-												<th>@lang('IP')</th>
-												<th>@lang('Device')</th>
-												<th>@lang('isDesktop')</th>
-												<th>@lang('isPhone')</th>
-												<th>@lang('isTaplet')</th>
-												<th>@lang('Browser')</th>
-												<th>@lang('Browser V')</th>
-												<th>@lang('Platform')</th>
-												<th>@lang('Platform V')</th>
-												<th>@lang('isRobot')</th>
-												<th>@lang('lang')</th>
-											</tr>
-										</thead>
-										<tbody>
-											@forelse ($device as $dev)
+                                                <td class=" text-center">
+                                                    {{ $user->firstItem() + $key }}
+                                                </td>
+												<td><div class="badge text-primary bg-light-primary">{{$users->member_id}}</div></td>
+												<td data-label="@lang('Name')">
+                                                    {{$users->fullname}}
+                                                    <br>
+                                                    <div class="badge text-success bg-light-success"></div><br>
+												</td>
+												<td>{{$users->email}}</td>
+												<td>{{$users->mobile_code}} {{$users->mobile}}</td>
+												<td>{{$users->address}}</td>
+
+												<td data-label="@lang('Joined At')">
+													{{ showDateTime($users->created_at) }} <br> {{ diffForHumans($users->created_at) }}
+												</td>
+
+												<td data-label="@lang('Action')">
+												</td>
+												@empty
 												<tr>
-													<td>{{$dev->ip->ip_address}}</td>
-													<td>{{$dev->device}}</td>
-													<td>{{$dev->isDesktop}}</td>
-													<td>{{$dev->isPhone}}</td>
-													<td>{{$dev->isTablet}}</td>
-													<td>{{$dev->browser}}</td>
-													<td>{{$dev->browser_v}}</td>
-													<td>{{$dev->platform}}</td>
-													<td>{{$dev->platform_v}}</td>
-													<td>{{$dev->isRobot}}</td>
-													<td>{{$dev->lang}}</td>
+													<td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
 												</tr>
-											@empty
-												<td class="text-muted text-center" colspan="100%">Tidak ada data</td>
-											@endforelse
+												@endforelse
+											</tr>
 										</tbody>
 									</table>
+									{!! $user->links() !!}
 								</div>
 							</div>
 							<div class="card-footer py-4">
