@@ -1,10 +1,10 @@
 <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-					<img src="{{ asset('assets/images/logo-rmp.png')}}" class="logo-icon" alt="logo icon">
+					<img src="{{ asset('assets/images/1.png')}}" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    {{-- <h4 class="logo-text">{{@$settings->name}}</h4> --}}
+                    <h4 class="logo-text">BLESSING SERVICE</h4>
                 </div>
                 <div class="toggle-icon ms-auto"><i class='bx bx-first-page'></i>
                 </div>
@@ -13,12 +13,12 @@
             <ul class="metismenu" id="menu">
 
                <li>
-                    <a href="javascript:;" class="has-arrow">
+                    <a href="{{route('member.dashboard')}}" >
                         <div class="menu-title">@lang('Dashboard')</div>
                     </a>
                 </li>
 
-                <li class="menu-label">@lang('Master Management')</li>
+                {{-- <li class="menu-label">@lang('Master Management')</li> --}}
 				<li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon"><i class='lni lni-users'></i>
@@ -41,7 +41,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-label">@lang('Membership Management')</li>
+                {{-- <li class="menu-label">@lang('Membership Management')</li> --}}
 
             </ul>
             <!--end navigation-->

@@ -15,7 +15,7 @@ class AntrianMemberController extends Controller
 	{
 		$data['pageTitle'] = "Antrian " . date('d-m-Y');
 		$data['emptyMessage'] = "Belum ada data";
-		$data['antrian'] = Antrian::where('tanggal', date('Y-m-d'))->with('service')->orderBy('id', 'DESC')->paginate(getPaginate());
+		$data['antrian'] = Antrian::where('tanggal', date('Y-m-d'))->with('service')->paginate(getPaginate());
 		return view('member.antrian.index', $data);
 	}
 	public function create()

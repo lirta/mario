@@ -80,6 +80,7 @@ Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
 	Route::group(['middleware' => 'auth:web', 'language'], function () {
 		// dashboard
 		Route::get('/', [MemberAuthController::class, 'dashboard'])->name('member.dashboard');
+		Route::post('/edit-profile', [MemberAuthController::class, 'editProfile'])->name('member.edit.profile');
 		Route::get('/layanan', [LayananMemberController::class, 'index'])->name('member.layanan');
 		Route::get('/antrian', [AntrianMemberController::class, 'index'])->name('member.antrian');
 		Route::get('/antrian-create', [AntrianMemberController::class, 'create'])->name('member.antrian.create');
@@ -119,6 +120,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::get('/antrian-progres/{id}', [AntrianController::class, 'progres'])->name('antrian.progres');
 		Route::get('/antrian-finish/{id}', [AntrianController::class, 'finish'])->name('antrian.finish');
 		Route::get('/antrian-cancel/{id}', [AntrianController::class, 'cancel'])->name('antrian.cancel');
+		Route::post('/antrian-extra-time', [AntrianController::class, 'extraTime'])->name('antrian.extra-time');
 
 		// antrian history
 		Route::get('/antrian-history', [AntrianController::class, 'history'])->name('antrian.history');

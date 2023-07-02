@@ -36,6 +36,7 @@
 										<th>@lang('Tanggal')</th>
 										<th>@lang('Layanan')</th>
 										<th>@lang('Perkiraan Waktu')</th>
+										<th>@lang('Tambahan Waktu')</th>
 										<th>@lang('Description')</th>
 										<th>@lang('Status')</th>
 										</tr>
@@ -49,16 +50,17 @@
 												<td>{{$item->tanggal}}</td>
 												<td>{{$item->service->layanan}}</td>
 												<td>{{$item->service->perkiraan_waktu}} Menit</td>
+												<td>{{$item->extra_time}} Menit</td>
 												<td>{{$item->service->description}}</td>
 												<td>
 													@if ($item->status == 0)
-														<span class="badge text-warning bg-light-warning p-2 px-3 ps">Waiting List</span>
+														<span class="badge text-warning bg-light-warning p-2 px-3 ps">Menunggu Antrian</span>
 													@elseif($item->status == 1)
-														<span class="badge text-primary bg-light-primary p-2 px-3 ps">In Progres</span>
+														<span class="badge text-primary bg-light-primary p-2 px-3 ps">Sedang dikerjakan</span>
 													@elseif($item->status == 2)
-														<span class="badge text-success bg-light-success p-2 px-3 ps">Finish</span>
+														<span class="badge text-success bg-light-success p-2 px-3 ps">Selesai</span>
 													@elseif($item->status == 3)
-														<span class="badge text-danger bg-light-danger p-2 px-3 ps">Cancel</span>
+														<span class="badge text-danger bg-light-danger p-2 px-3 ps">Batal</span>
 													@endif
 												</td>
 											</tr>

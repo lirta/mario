@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAntrianRequest;
 use App\Http\Requests\UpdateAntrianRequest;
 use App\Models\Antrian;
+use Illuminate\Http\Request;
 
 class AntrianController extends Controller
 {
@@ -17,7 +18,7 @@ class AntrianController extends Controller
 	{
 		$data['pageTitle'] = "Antrian " . date('d-m-Y');
 		$data['emptyMessage'] = "Belum ada data";
-		$data['antrian'] = Antrian::where('tanggal', date('Y-m-d'))->with('service')->orderBy('id', 'DESC')->paginate(getPaginate());
+		$data['antrian'] = Antrian::where('tanggal', date('Y-m-d'))->with('service')->paginate(getPaginate());
 		return view('admin.antrian.index', $data);
 	}
 
@@ -66,6 +67,19 @@ class AntrianController extends Controller
 		$data->save();
 
 		return back()->with('success', 'Success cancel antrian');
+	}
+	public function extraTime(Request $request)
+	{
+		$this->validate($request, [
+			'waktu' => 'required',
+		]);
+		$data = Antrian::find($request->id);
+		if (empty($data)) {
+			return redirect()->route('antrian.index')->with('error', 'Data not fonud');
+		}
+		$data->extra_time = $request->waktu;
+		$data->save();
+		return back()->with('success', 'Success add extra time antrian');
 	}
 	public function create()
 	{

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Antrian;
 use App\Models\Consumen;
 use App\Models\Order;
 use App\Models\Partner;
@@ -40,7 +41,11 @@ class AdminAuthController extends Controller
 	public function dashboard()
 	{
 		$data['pageTitle'] = "Dashboard";
-		// dd($data);
+		$data['all'] = Antrian::where('tanggal', date('Y-m-d'))->count();
+		$data['wait'] = Antrian::where('tanggal', date('Y-m-d'))->where('status', '0')->count();
+		$data['finish'] = Antrian::where('tanggal', date('Y-m-d'))->where('status', '2')->count();
+		$data['antri'] = Antrian::with('user', 'service')->where('tanggal', date('Y-m-d'))->where('status', '1')->first();
+		// dd($data['antri']);
 		return view('admin.dashboard.index', $data);
 	}
 	public function login(Request $request)
@@ -83,6 +88,6 @@ class AdminAuthController extends Controller
 
 		$request->session()->regenerateToken();
 
-		return redirect('/admin');
+		return redirect('/admin/login');
 	}
 }

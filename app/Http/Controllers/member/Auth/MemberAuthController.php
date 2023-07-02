@@ -49,36 +49,49 @@ class MemberAuthController extends Controller
 
 	public function dashboard()
 	{
+		$data['user'] = User::where('email', Auth::user()->email)->first();
+		// dd($data['user']);
+		return view('member.dashboard.index', $data);
+	}
 
-		return view('member.dashboard.index');
-		// $data['pageTitle']      = "Dashboard";
-		// $data['settings']       = Setting::first();
-		// $data['vd']             = UserPackage::where('user_id', auth()->user()->id)->sum('vd');
-		// $data['walletInProfit'] = WalletVD::where('user_id', Auth::guard('web')->user()->id)->where('type', 'in')->sum('amount');
-		// // $data['walletOut']		= WalletVD::where('user_id', Auth::guard('web')->user()->id)->where('type', 'out')->sum('amount');
+	public function editProfile(Request $request)
+	{
+		// dd($request->all());
+		$this->validate($request, [
+			'fullname' => 'required|string|max:40',
+			'email'    => 'required|string|max:90|unique:users,email',
+			'phone'    => 'required|numeric|unique:users,mobile',
+		]);
+		if ($request->password != null) {
+			$this->validate($request, [
+				'password' => 'required|min:6|confirmed',
+			]);
 
+			$user = User::where('member_id', $request->member_id)->first();
+			if ($user == null) {
+				return redirect()->back()->with('error', 'User not found');
+			}
 
-		// $data['poinIn']      = WalletPoint::where('user_id', Auth::id())->where('type', 'In')->sum('point_amount');
-		// $data['poinOut']     = WalletPoint::where('user_id', Auth::id())->where('type', 'Out')->sum('point_amount');
-		// $data['saldoWallet'] = getBalanceUser(Auth::id());
+			$user->fullname              = $request->fullname;
+			$user->email                 = $request->email;
+			$user->mobile_code           = '62';
+			$user->mobile                = ($request->phone * 1);
+			$user->password              = bcrypt($request->password);
+			$user->save();
+			return redirect()->back()->with('success', 'Update profile success');
+		}
 
-		// $data['walletIn']  = Wallet::where('user_id', auth()->user()->id)->where('type', 'Credit')->sum('amount');
-		// $data['walletOut'] = Wallet::where('user_id', auth()->user()->id)->where('type', 'Debit')->sum('amount');
+		$user = User::where('member_id', $request->member_id)->first();
+		if ($user == null) {
+			return redirect()->back()->with('error', 'User not found');
+		}
 
-		// $data['refferal']     = User::where('referral_by', Auth::id())->count();
-		// $data['news']         = News::all();
-		// $data['slide']        = NewsPicture::all();
-		// $data['archifment']   = Archifment::all();
-
-		// $data['matrix']       = UserMatrix::where('user_id', Auth::id())->latest()->first();
-		// $data['profitTrader'] = ProfitTrader::get();
-
-		// $data['userContest'] = UserContest::where('user_id', Auth::id())->get();
-
-		// $data['popup'] = Popup::first();
-		// // dd($data['refferal']);
-		// // $data['poin'] =
-		// return view('member.index', $data);
+		$user->fullname              = $request->fullname;
+		$user->email                 = $request->email;
+		$user->mobile_code           = '62';
+		$user->mobile                = ($request->phone * 1);
+		$user->save();
+		return redirect()->back()->with('success', 'Update profile success');
 	}
 
 	public function logout()

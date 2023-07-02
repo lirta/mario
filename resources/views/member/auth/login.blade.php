@@ -40,7 +40,7 @@
                                     <div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;">
                                             <span class="d-flex justify-content-center align-items-center">
-                                                <img class="me-2" src="{{ url('assets/images/logo-img.png')}}" width="150" alt="Image Description">
+                                                <img class="me-2" src="{{ url('assets/images/1.png')}}" width="150" alt="Image Description">
 											</span>
 										</a>
 									</div>
